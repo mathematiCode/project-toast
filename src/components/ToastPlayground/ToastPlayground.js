@@ -11,14 +11,11 @@ const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
 function ToastPlayground() {
   const [variant, setVariant] = React.useState("");
   const [message, setMessage] = React.useState("");
-  const [toasts, setToasts] = React.useContext(ToastContext);
+  const { toasts, addToast } = React.useContext(ToastContext);
 
   function popToast(event, variant, message) {
     event.preventDefault();
-    let updatedToastArray = [...toasts];
-    let id = crypto.randomUUID();
-    updatedToastArray.push({ id, variant, message });
-    setToasts(updatedToastArray);
+    addToast(variant, message);
     setVariant();
     setMessage("");
   }
