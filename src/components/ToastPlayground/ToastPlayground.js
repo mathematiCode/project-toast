@@ -1,8 +1,8 @@
 import React from "react";
 
 import Button from "../Button";
-import Toast from "../Toast";
 import ToastShelf from "../ToastShelf";
+import { ToastContext } from "../ToastProvider";
 
 import styles from "./ToastPlayground.module.css";
 
@@ -11,7 +11,7 @@ const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
 function ToastPlayground() {
   const [variant, setVariant] = React.useState("");
   const [message, setMessage] = React.useState("");
-  const [toasts, setToasts] = React.useState([]);
+  const [toasts, setToasts] = React.useContext(ToastContext);
 
   function popToast(event, variant, message) {
     event.preventDefault();
